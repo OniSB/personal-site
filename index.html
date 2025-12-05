@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYDK1608JZ"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -32,305 +32,125 @@
     <link rel="icon" type="image/png" href="favicon_guitar.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            background-color: #F5F3EE;
+            background-color: #000;
             font-family: 'Roboto Mono', monospace;
-            color: #2A2A2A;
-            line-height: 1.6;
-            padding: 60px 40px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
             position: relative;
         }
-        
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        
-        .section {
-            margin-bottom: 30px;
-        }
-        
-        .section-number {
-            color: #999;
+
+        .editor {
+            padding: 20px;
             font-size: 14px;
-            margin-bottom: 4px;
+            color: #fff;
         }
 
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #2A2A2A;
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
+        .line {
+            display: flex;
+            line-height: 1.5;
         }
 
-        .section-title::after {
-            content: '';
+        .line-number {
+            color: #666;
+            margin-right: 20px;
+            user-select: none;
+            min-width: 20px;
+            text-align: right;
+        }
+
+        .line-content a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .line-content a:hover {
+            opacity: 0.7;
+        }
+
+        .top-right-link {
             position: absolute;
-            right: -12px;
-            top: 0;
-            width: 6px;
-            height: 100%;
-            background-color: #2A2A2A;
-            opacity: 0;
-            animation: none;
+            top: 20px;
+            right: 20px;
+            font-size: 12px;
         }
 
-        .section.blink .section-title::after {
-            animation: blink 1s step-end infinite;
+        .top-right-link a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .top-right-link a:hover {
+            opacity: 0.7;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background-color: #fff;
+            animation: blink 1s infinite;
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        h1 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #2A2A2A;
-        }
-
-        .tagline {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 4px;
-        }
-
-        .tagline-blink {
-            display: inline-block;
-            width: 6px;
-            height: 1.2em;
-            background-color: #2A2A2A;
-            margin-left: 2px;
-            vertical-align: text-bottom;
-            animation: blink 1s step-end infinite;
-        }
-
-        .tagline-blink.hide {
-            display: none;
-        }
-        
-        .profile-pic {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 8px;
-            margin: 20px auto;
-            display: block;
-        }
-
-        .bio-text {
-            font-size: 16px;
-            color: #4A4A4A;
-            margin-bottom: 12px;
-        }
-
-        .link-list {
-            margin-top: 12px;
-        }
-
-        .link-line {
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
-        
-        .link-line a {
-            color: #2A2A2A;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-        
-        .link-line a:hover {
-            opacity: 0.6;
-        }
-        
-        .project-card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            border: 1px solid #E5E5E5;
-        }
-
-        .project-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .project-description {
-            color: #666;
-            font-size: 15px;
-        }
-
-        .projects-placeholder {
-            color: #999;
-            font-style: italic;
-            margin-top: 12px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .nav-sidebar {
-            position: fixed;
-            left: 40px;
-            top: 60px;
-            font-size: 13px;
-        }
-
-        .nav-item {
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            text-decoration: none;
-            display: block;
-            color: #CCC;
-        }
-
-        .nav-item:hover {
-            color: #666;
-        }
-
-        .nav-item:visited {
-            color: #CCC;
-        }
-
-        .nav-item:visited:hover {
-            color: #666;
-        }
-
-        @media (max-width: 900px) {
-            .nav-sidebar {
-                display: none;
+            0%, 49% {
+                opacity: 1;
+            }
+            50%, 100% {
+                opacity: 0;
             }
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const taglineBlink = document.querySelector('.tagline-blink');
-
-            function blinkSection(targetSection) {
-                // Hide tagline blink
-                taglineBlink.classList.add('hide');
-
-                // Remove blink class from all sections
-                document.querySelectorAll('.section').forEach(s => s.classList.remove('blink'));
-
-                // Scroll to section
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-
-                // Add blink class after a short delay to ensure scroll has started
-                setTimeout(() => {
-                    targetSection.classList.add('blink');
-                }, 100);
-            }
-
-            // Handle navigation links
-            const navLinks = document.querySelectorAll('.nav-item');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-
-                    if (targetSection) {
-                        blinkSection(targetSection);
-                    }
-                });
-            });
-
-            // Handle clicking on section titles
-            const sectionTitles = document.querySelectorAll('.section-title');
-            sectionTitles.forEach(title => {
-                title.addEventListener('click', function() {
-                    const section = this.closest('.section');
-                    if (section) {
-                        blinkSection(section);
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 <body>
-    <nav class="nav-sidebar">
-        <a href="#about" class="nav-item">01 About</a>
-        <a href="#online" class="nav-item">02 Online Presence</a>
-        <a href="#connect" class="nav-item">03 Connect</a>
-        <a href="#projects" class="nav-item">04 Projects</a>
-    </nav>
-
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="section">
-            <h1>Oni Bhaumick</h1>
-            <p class="tagline">Currently a Founder's Associate @ incident.io.</p>
-            <p class="tagline"> ex-McKinsey, UCL alum, London based.<span class="tagline-blink"></span></p>
-
-            <img src="profile.png" alt="Profile picture" class="profile-pic">
+    <div class="top-right-link">
+        <a href="something_cool/">something_cool</a>
+    </div>
+    <div class="editor">
+        <div class="line">
+            <span class="line-number">1</span>
+            <span class="line-content">Name: Oni Bhaumick</span>
         </div>
-
-        <!-- About Section -->
-        <div class="section" id="about">
-            <div class="section-number">01</div>
-            <div class="section-title">About</div>
-            <p class="bio-text">
-                Generalist background. Academically, I studied BASc Arts & Sciences @ UCL, reading Philosophy, Engineering, Economics, Documentary film-making & Design. 
-            </p>
-            <p class="bio-text">
-                I then went to McKinsey for 3 years as a consultant across industries. Now I'm working in Operations at incident.io, across Functions.
-            </p>
-            <p class="bio-text">
-                Feel more like a jack-of-all trades, master of none - but better than being a master of one.
-            </p>
-            <p class="bio-text">
-                I enjoy learning languages (and accents), enjoy driving and cooking more than usual, and enjoy playing the guitar (classically trained, inclined to multiple genres).
-            </p>
+        <div class="line">
+            <span class="line-number">2</span>
+            <span class="line-content">Current location: London</span>
         </div>
-
-        <!-- Online Presence -->
-        <div class="section" id="online">
-            <div class="section-number">02</div>
-            <div class="section-title">Online Presence</div>
-            <div class="link-list">
-                <div class="link-line">📖 LinkedIn: <a href="https://www.linkedin.com/in/saumark-b/" target="_blank">https://www.linkedin.com/in/saumark-b/</a> <span style="color: #999;">&lt;-- I don't post here much</span></div>
-                <div class="link-line">💻 GitHub: <a href="https://github.com/OniSB" target="_blank">https://github.com/OniSB</a></div>
-                <div class="link-line">✍️ Substack: <span style="color: #999; font-style: italic;">[Coming soon]</span></div>
-            </div>
+        <div class="line">
+            <span class="line-number">3</span>
+            <span class="line-content">Current role: Founder's Associate @ <a href="https://incident.io" target="_blank">incident.io</a></span>
         </div>
-
-        <!-- Connect -->
-        <div class="section" id="connect">
-            <div class="section-number">03</div>
-            <div class="section-title">Connect</div>
-            <div class="link-list">
-                <div class="link-line">Email: <a href="mailto:onibhaumick@outlook.com">onibhaumick@outlook.com</a></div>
-            </div>
+        <div class="line">
+            <span class="line-number">4</span>
+            <span class="line-content">Past role: McKinsey</span>
         </div>
-
-        <!-- Projects -->
-        <div class="section" id="projects">
-            <div class="section-number">04</div>
-            <div class="section-title">Projects</div>
-            <p><span style="color: #999; font-style: italic;">[Coming soon]</span></div></p>
+        <div class="line">
+            <span class="line-number">5</span>
+            <span class="line-content">Higher education: <a href="https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/arts-and-sciences-basc" target="_blank">BASc Arts & Sciences</a> @ UCL</span>
+        </div>
+        <div class="line">
+            <span class="line-number">6</span>
+            <span class="line-content">LinkedIn: <a href="https://www.linkedin.com/in/saumark-b/" target="_blank">https://www.linkedin.com/in/saumark-b/</a></span>
+        </div>
+        <div class="line">
+            <span class="line-number">7</span>
+            <span class="line-content">GitHub: <a href="https://github.com/OniSB" target="_blank">https://github.com/OniSB</a></span>
+        </div>
+        <div class="line">
+            <span class="line-number">8</span>
+            <span class="line-content">Email: <a href="mailto:onibhaumick@outlook.com">onibhaumick@outlook.com</a></span>
+        </div>
+        <div class="line">
+            <span class="line-number">9</span>
+            <span class="line-content"><span class="cursor"></span></span>
         </div>
     </div>
 </body>
