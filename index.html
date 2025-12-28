@@ -11,7 +11,7 @@
     gtag('config', 'G-GYDK1608JZ');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Oni Bhaumick</title>
     <meta name="description" content="Oni Bhaumick - Founder's Associate at incident.io, ex-McKinsey consultant, UCL Arts & Sciences alum. Generalist background across Philosophy, Engineering, Economics, and Design. Based in London.">
     <meta name="keywords" content="Oni Bhaumick, incident.io, McKinsey, UCL, Founder's Associate, consultant, London, generalist">
@@ -45,7 +45,8 @@
             font-family: 'Roboto Mono', monospace;
             color: #fff;
             height: 100vh;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
             position: relative;
         }
 
@@ -53,11 +54,14 @@
             padding: 20px;
             font-size: 14px;
             color: #fff;
+            width: max-content;
+            min-width: 100%;
         }
 
         .line {
             display: flex;
             line-height: 1.5;
+            white-space: nowrap;
         }
 
         .line-number {
@@ -107,6 +111,30 @@
             }
             50%, 100% {
                 opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .editor {
+                font-size: 8px;
+                padding: 10px;
+                padding-right: 60px;
+            }
+
+            .line-number {
+                margin-right: 10px;
+                min-width: 15px;
+            }
+
+            .top-right-link {
+                font-size: 7px;
+                top: 10px;
+                right: 10px;
+            }
+
+            .cursor {
+                width: 6px;
+                height: 10px;
             }
         }
     </style>
